@@ -1,0 +1,13 @@
+# .github-ci.yml file
+
+name: Github actions demo
+run-name: Test ${{github.ref_name}} sur ${{github.deploy_target}} par ${{github.actor}}
+
+on: push
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: define cache dir & use it npm!
+        run : npm ci --cache .npm --prefer-offline
