@@ -1,7 +1,7 @@
 # .github-ci.yml file
 
 name: Github actions demo
-run-name: Test ${{github.ref_name}} sur ${{github.deploy_target}} par ${{github.actor}}
+run-name: Test ${{github.ref_name}} sur ${{ github.event.workflow_run.head_commit.message }} par ${{github.actor}}
 
 on: push
 
@@ -15,3 +15,5 @@ jobs:
         run: npm ci --cache .npm --prefer-offline
       - name: validate
         run: npm run lint
+      - name: test
+        run: npm test
