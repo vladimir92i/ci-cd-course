@@ -1,0 +1,15 @@
+name: release
+
+run-name: release pipeline
+
+on: 
+  workflow_dispatch:
+  
+
+jobs:
+  install: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: on release
+      if: '$CI_COMMIT_BRANCH == "main"  && $CI_COMMIT_TAG == null && $CI_COMMIT_TITLE !~ /^chore: release/'
+      run: npx --yes release-it --ci
