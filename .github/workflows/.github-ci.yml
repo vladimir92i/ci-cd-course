@@ -9,5 +9,7 @@ jobs:
   install:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
       - name: define cache dir & use it npm!
         run : npm ci --cache .npm --prefer-offline
